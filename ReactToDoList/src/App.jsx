@@ -3,10 +3,17 @@ import { NewToDoForm } from "./NewToDoForm"
 import "./styles.css"
 
 export default function App() {
-  const [todos, setTodos] = useState([])
+  const [todos, setTodos] = useState(() => {
+    const localValue = localStorage.getItem("ITEMS")
+    if (localValue == null) return []
+
+    return JSON.parse(localValue)
+  })
 
 
-  useEffect
+  useEffect(() => {
+    localStorage.setItem("ITEM", JSON.stringify(todos))
+  }, [todos])
 
 
   function addToDo(title) {
