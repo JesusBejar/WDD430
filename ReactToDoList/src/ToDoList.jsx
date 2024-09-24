@@ -1,18 +1,19 @@
-import { ToDoItem } from "./ToDoItem"
+import { TodoItem } from "./TodoItem"
 
-export function ToDoList( todos, toggleToDo, deleteToDo ) {
-    return (
-        <ul className="list">
-        {todos.length == 0 && "No to-dos yet"}
-        {todos.map(todo => {
-          return (
-            <ToDoItem 
+export function TodoList({ todos, toggleTodo, deleteTodo }) {
+  return (
+    <ul className="list">
+      {todos.length === 0 && "No Todos"}
+      {todos.map(todo => {
+        return (
+          <TodoItem
             {...todo}
             key={todo.id}
-            toggleToDo={toggleToDo}
-            deleteToDo={deleteToDo}
-            />
-        )})}
-      </ul>
-    )
+            toggleTodo={toggleTodo}
+            deleteTodo={deleteTodo}
+          />
+        )
+      })}
+    </ul>
+  )
 }
